@@ -35,11 +35,13 @@ export class ContactComponent {
         })
         .then(res => res.json())
         .then(result => {
-          if (result.success && result.score >= 0.5) {
+          console.log('reCAPTCHA verification result:', result);
+          if (result.success) {
             this.sendToFormspree(formData);
           } else {
             this.isSubmitting = false;
-            this.errorMessage = 'Sorry, we could not verify you as a real user.';
+            console.warn('reCAPTCHA verification failed:', result.reason);
+            this.errorMessage = 'Verification failed. Please try again or contact me directly.';
           }
         })
         .catch(() => {

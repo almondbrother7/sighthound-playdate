@@ -78,17 +78,12 @@ export const verifyRecaptcha = onRequest(
       try {
         const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
           method: "POST",
-          headers: {"Content-Type": "application/x-www-form-urlencoded"},
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `secret=${recaptchaSecret.value()}&response=${recaptchaToken}`,
         });
-
         const data: RecaptchaResponse = await response.json() as RecaptchaResponse;
-
-        if (data.success && data.score && data.score >= 0.5) {
-          return res.status(200).json({success: true});
-        } else {
-          return res.status(403).json({success: false, error: data["error-codes"]});
-        }
+        
+        return res.status(200).json(data);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error("[verifyRecaptcha] Error:", error);
@@ -100,6 +95,7 @@ export const verifyRecaptcha = onRequest(
           error: getErrorMessage(error),
         });
       }
+
     });
   }
 );
