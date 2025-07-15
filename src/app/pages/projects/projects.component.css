@@ -1,0 +1,39 @@
+.projects-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+mat-card.project-card {
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+mat-card-subtitle {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+mat-card-content ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+mat-card-content a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+mat-card-content a:hover {
+  text-decoration: underline;
+}
+
+.tech-badges img {
+  margin-right: 8px;
+  height: 22px;
+  vertical-align: middle;
+}

@@ -1,0 +1,14 @@
+.resume-section,
+.certifications-section {
+  margin-top: 32px;
+}
+
+.certifications-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.certifications-section a {
+  text-decoration: none;
+  color: #1976d2;
+}
