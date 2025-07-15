@@ -1,40 +1,8 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
-
-import {setGlobalOptions} from "firebase-functions/v2/options";
-import {onRequest} from "firebase-functions/v2/https";
-import {defineSecret} from "firebase-functions/params";
-// import fetch from "node-fetch";
 import cors from "cors";
+import { setGlobalOptions } from "firebase-functions/v2/options";
+import { onRequest } from "firebase-functions/v2/https";
+import { defineSecret } from "firebase-functions/params";
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
-
-// For cost control, you can set the maximum number of containers that can be
-// running at the same time. This helps mitigate the impact of unexpected
-// traffic spikes by instead downgrading performance. This limit is a
-// per-function limit. You can override the limit for each function using the
-// `maxInstances` option in the function's options, e.g.
-// `onRequest({ maxInstances: 5 }, (req, res) => { ... })`.
-// NOTE: setGlobalOptions does not apply to functions using the v1 API. V1
-// functions should each use functions.runWith({ maxInstances: 10 }) instead.
-// In the v1 API, each function can only serve one request per container, so
-// this will be the maximum concurrent request count.
-// setGlobalOptions({maxInstances: 10});
-
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
-
-//  Global defaults for all functions
 setGlobalOptions({
   maxInstances: 10,
   region: "us-east1",
@@ -51,14 +19,15 @@ interface RecaptchaResponse {
   "error-codes"?: string[];
 }
 
-function getErrorMessage(error: unknown): string {
-  return error instanceof Error ? error.message : "Unknown error occurred";
-}
-
-const corsHandler = cors({origin: true});
 const recaptchaSecret = defineSecret("RECAPTCHA_SECRET");
 
-// v2 Cloud Function
+const corsHandler = cors({
+  origin: [
+    "https://angular-dev-portfolio.web.app",
+    "http://localhost:4200"
+  ]
+});
+
 export const verifyRecaptcha = onRequest(
   {
     secrets: [recaptchaSecret],
@@ -69,10 +38,11 @@ export const verifyRecaptcha = onRequest(
   async (req, res) => {
     corsHandler(req, res, async () => {
       const fetch = (await import("node-fetch")).default;
-      const {recaptchaToken} = req.body;
+      const { recaptchaToken } = req.body;
 
       if (!recaptchaToken) {
-        return res.status(400).json({success: false, error: "Missing reCAPTCHA token"});
+        res.status(400).json({ success: false, reason: "Missing token" });
+        return;
       }
 
       try {
@@ -81,21 +51,28 @@ export const verifyRecaptcha = onRequest(
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: `secret=${recaptchaSecret.value()}&response=${recaptchaToken}`,
         });
+
         const data: RecaptchaResponse = await response.json() as RecaptchaResponse;
-        
-        return res.status(200).json(data);
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          console.error("[verifyRecaptcha] Error:", error);
+        console.log("[verifyRecaptcha] Full response:", data);
+
+        const threshold = 0.5;
+        const isHuman = data.success && (data.score ?? 0) >= threshold;
+
+        if (isHuman) {
+          res.status(200).json({ success: true });
         } else {
-          console.error("Unknown error:", error);
+          res.status(403).json({
+            success: false,
+            reason: data["error-codes"] || `Low score: ${data.score ?? "unknown"}`,
+          });
         }
-        return res.status(500).json({
+      } catch (error: unknown) {
+        console.error("[verifyRecaptcha] Error:", error);
+        res.status(500).json({
           success: false,
-          error: getErrorMessage(error),
+          reason: error instanceof Error ? error.message : "Unknown error",
         });
       }
-
     });
   }
 );

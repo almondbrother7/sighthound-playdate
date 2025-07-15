@@ -28,7 +28,7 @@ export class ContactComponent {
 
     grecaptcha.ready(() => {
       grecaptcha.execute(this.env.recaptchaSiteKey, { action: 'submit' }).then((token: string) => {
-        fetch(this.env.verifyRecaptchaUrl, {
+        fetch("/api/verifyRecaptcha", {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ recaptchaToken: token })
