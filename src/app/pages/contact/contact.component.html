@@ -7,21 +7,21 @@
     certification and would love to work with those technologies.
   </p>
 
-  <ul class="contact-list">
+  <ul class="icon-text-list">
     <li>
-      <i class="fa fa-linkedin"></i>
-      <a href="https://www.linkedin.com/in/andrew-carey7" target="_blank">
+      <span class="material-icons">link</span>
+      <a href="https://www.linkedin.com/in/andrew-carey7" target="_blank" rel="noopener">
         LinkedIn Profile
       </a>
     </li>
     <li>
-      <i class="fa fa-github"></i>
-      <a href="https://github.com/almondbrother7" target="_blank">
+      <span class="material-icons">code</span>
+      <a href="https://github.com/almondbrother7" target="_blank" rel="noopener">
         GitHub Projects
       </a>
     </li>
     <li>
-      <i class="fa fa-envelope"></i>
+      <span class="material-icons">email</span>
       <a href="mailto:almondbrother7@gmail.com">
         Email Andrew Carey
       </a>
@@ -53,6 +53,12 @@
 
     <div class="feedback success" *ngIf="successMessage">{{ successMessage }}</div>
     <div class="feedback error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div style="display: none;">
+      <label>Leave this field empty</label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" />
+    </div>
+
 
   </form>
 </div>

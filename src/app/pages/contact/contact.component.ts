@@ -17,10 +17,16 @@ export class ContactComponent {
   constructor(private env: EnvironmentService, private http: HttpClient) {}
 
   onSubmit(event: Event) {
-    event.preventDefault(); // Stop default page reload
+    event.preventDefault();
 
     const form = event.target as HTMLFormElement;
-    const formData = new FormData(form); // Collect Name, Email, Message
+    const formData = new FormData(form);
+
+    const honeypot = (form.querySelector('input[name="website"]') as HTMLInputElement)?.value;
+    if (honeypot) {
+      console.warn('Honeypot field filled - likely a bot.');
+      return;
+    }
 
     this.isSubmitting = true;
     this.successMessage = '';
