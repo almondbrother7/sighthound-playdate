@@ -3,3 +3,14 @@
   color: #64ffda;
   border-bottom: 2px solid #64ffda;
 }
+
+.site-title {
+  text-decoration: none;
+  color: white; /* or mat-color($primary-palette, default-contrast) */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.site-title:hover {
+  color: #64ffda; /* Teal accent on hover */
+}
