@@ -128,3 +128,34 @@ a[mat-button] {
   margin-bottom: 0.5rem;
 }
 
+@media screen and (max-width: 768px) {
+  /* ABOUT SECTION: stack vertically */
+  .about-header {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+  }
+  .about-header img.profile-photo {
+    max-width: 150px;
+    margin-bottom: 1rem;
+  }
+
+  /* CERTIFICATIONS: stack badges */
+  .certifications-section ul {
+    display: flex;
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+
+  /* PROJECT CARDS: 1 column on mobile */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Resume download button full width */
+  .resume-section a[mat-raised-button] {
+    width: 100%;
+  }
+}
+
