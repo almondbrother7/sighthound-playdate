@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "angular-portfolio"
+    "default": "angular-dev-portfolio"
   },
   "targets": {},
   "etags": {}
