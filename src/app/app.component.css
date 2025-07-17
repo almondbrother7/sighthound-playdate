@@ -14,3 +14,7 @@
 .site-title:hover {
   color: #64ffda; /* Teal accent on hover */
 }
+
+.nav-container {
+  height: 100vh; /* full height for sidenav */
+}

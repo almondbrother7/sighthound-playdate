@@ -1,35 +1,63 @@
-<mat-toolbar color="primary">
-  <a routerLink="/" class="site-title">
-    Andrew Carey Portfolio
-  </a>
-  <span class="spacer"></span>
+<mat-sidenav-container class="nav-container">
 
-  <a mat-button 
-     routerLink="/" 
-     routerLinkActive="active-link" 
-     [routerLinkActiveOptions]="{ exact: true }">
-     Home
-  </a>
+  <!-- Side Drawer for Mobile -->
+  <mat-sidenav #drawer mode="over" class="mobile-nav">
+    <button mat-button routerLink="/" (click)="drawer.close()">Home</button>
+    <button mat-button routerLink="/about" (click)="drawer.close()">About</button>
+    <button mat-button routerLink="/projects" (click)="drawer.close()">Projects</button>
+    <button mat-button routerLink="/contact" (click)="drawer.close()">Contact</button>
+  </mat-sidenav>
 
-  <a mat-button 
-     routerLink="/about" 
-     routerLinkActive="active-link">
-     About
-  </a>
+  <mat-sidenav-content>
 
-  <a mat-button 
-     routerLink="/projects" 
-     routerLinkActive="active-link">
-     Projects
-  </a>
+    <!-- Top Toolbar -->
+    <mat-toolbar color="primary">
 
-  <a mat-button 
-     routerLink="/contact" 
-     routerLinkActive="active-link">
-     Contact
-  </a>
-</mat-toolbar>
+      <!-- MOBILE VIEW -->
+      <ng-container *ngIf="isMobile; else desktopNav">
+        <!-- Burger menu toggle -->
+        <button mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <a routerLink="/" class="site-title">
+          Andrew Carey Portfolio
+        </a>
+      </ng-container>
 
-<main style="padding: 16px;">
-  <router-outlet></router-outlet>
-</main>
+      <!-- DESKTOP VIEW -->
+      <ng-template #desktopNav>
+        <a routerLink="/" class="site-title">
+          Andrew Carey Portfolio
+        </a>
+        <span class="spacer"></span>
+        <a mat-button 
+          routerLink="/" 
+          routerLinkActive="active-link" 
+          [routerLinkActiveOptions]="{ exact: true }">
+          Home
+        </a>
+        <a mat-button 
+          routerLink="/about" 
+          routerLinkActive="active-link">
+          About
+        </a>
+        <a mat-button 
+          routerLink="/projects" 
+          routerLinkActive="active-link">
+          Projects
+        </a>
+        <a mat-button 
+          routerLink="/contact" 
+          routerLinkActive="active-link">
+          Contact
+        </a>
+      </ng-template>
+
+    </mat-toolbar>
+
+    <main style="padding: 16px;">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
