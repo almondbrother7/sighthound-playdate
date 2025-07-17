@@ -1,5 +1,24 @@
-html, body { height: 100%; }
+html, body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  background-attachment: fixed;
+  color: #222; 
+}
+
+app-root,
+.mat-sidenav-container,
+.main-content {
+  background: transparent !important;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+}
 
 .spacer {
   flex: 1 1 auto;
@@ -99,7 +118,7 @@ a[mat-button] {
 /* MOBILE breakpoint */
 @media screen and (max-width: 768px) {
   body {
-    background: rgba(255, 0, 0, 0.2) !important; /* DEBUG TINT */
+    background: inherit;
   }
 
   .mobile-menu-button {
@@ -140,22 +159,54 @@ a[mat-button] {
     max-width: 150px;
     margin-bottom: 1rem;
   }
-
   /* CERTIFICATIONS: stack badges */
   .certifications-section ul {
     display: flex;
     flex-direction: column !important;
     gap: 1rem;
   }
-
   /* PROJECT CARDS: 1 column on mobile */
   .projects-grid {
     grid-template-columns: 1fr !important;
   }
-
   /* Resume download button full width */
   .resume-section a[mat-raised-button] {
     width: 100%;
   }
+}
+
+button.mat-mdc-raised-button,
+a.mat-mdc-raised-button,
+button.mat-mdc-outlined-button,
+a.mat-mdc-outlined-button,
+button.mat-mdc-unelevated-button,
+a.mat-mdc-unelevated-button,
+button.mat-mdc-button,
+a.mat-mdc-button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.project-card a,
+.about-container a:not(.linkedin-button) {
+  color: #1976d2;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+
+.project-card a:hover,
+.about-container a:not(.linkedin-button):hover {
+  text-decoration: underline;
+  color: #125a9c;
 }
 

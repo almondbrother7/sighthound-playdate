@@ -17,8 +17,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

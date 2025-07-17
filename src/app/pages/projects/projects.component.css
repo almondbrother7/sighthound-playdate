@@ -57,3 +57,38 @@ mat-card-content a:hover {
   transform: scale(1.05);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
+
+.icon-text-list a,
+mat-card a {
+  transition: color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.icon-text-list a:hover,
+mat-card a:hover {
+  color: #1976d2;
+  transform: translateY(-1px);
+}
+
+.project-card.mat-mdc-card {
+  padding: 16px 20px; /* add breathing room */
+}
+
+.project-card mat-card-title {
+  margin-bottom: 8px; /* slight spacing under the title */
+  display: block;
+}
+
+.project-card mat-card-content {
+  padding-left: 4px; /* tiny nudge to align text better */
+}
+
+.project-card.mat-mdc-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card.mat-mdc-card:hover {
+  transform: translateY(-4px); /* gentle lift */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* slightly deeper shadow */
+}
