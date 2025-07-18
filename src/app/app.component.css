@@ -26,14 +26,14 @@
   font-size: 0.9rem;
   color: #666;
   border-top: 1px solid rgba(0,0,0,0.1);
+}
 
-  a {
-    color: #1976d2;
-    text-decoration: none;
-    margin: 0 6px;
+.site-footer a {
+  color: #1976d2;
+  text-decoration: none;
+  margin: 0 6px;
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
-  }
+.site-footer a:hover {
+  text-decoration: underline;
 }
