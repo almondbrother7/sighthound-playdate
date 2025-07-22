@@ -26,95 +26,31 @@
     <img src="assets/images/track/tracks.jpg" alt="Track overview map">
   </div>
 
-  <div class="gallery">    
-    <figure>
-      <img src="assets/images/track/turn1.jpg" alt="Track view 1">
-      <figcaption>Turn 1</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/turn2.jpg" alt="Track view 2">
-      <figcaption>Turn 2</figcaption>
-    </figure>
-        <figure>
-      <img src="assets/images/track/turn3.jpg" alt="Track view 3">
-      <figcaption>Turn 3</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/turn4.jpg" alt="Track view 4">
-      <figcaption>Turn 4</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/turn5.jpg" alt="Track view 5">
-      <figcaption>Turn 5</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/turn6.jpg" alt="Track view 6">
-      <figcaption>Turn 6</figcaption>
-    </figure>    <figure>
-      <img src="assets/images/track/starting-gate.jpg" alt="Track view 7">
-      <figcaption>Starting Gate</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/front-straight.jpg" alt="Track view 8">
-      <figcaption>Front Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/bamboo-shortcut.jpg" alt="Track view 9">
-      <figcaption>Bamboo Shortcut</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/bamboo-straight.jpg" alt="Track view 10">
-      <figcaption>Bamboo Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/bamboo-straight2.jpg" alt="Track view 11">
-      <figcaption>Bamboo Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/banana-shortcut.jpg" alt="Track view 12">
-      <figcaption>Banana Shortcut</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/deck-straight.jpg" alt="Track view 13">
-      <figcaption>Deck Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/east-straight.jpg" alt="Track view 14">
-      <figcaption>East Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/front-straight.jpg" alt="Track view 15">
-      <figcaption>Front Straight</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/hound-playground.jpg" alt="Track view 16">
-      <figcaption>Hound Playground</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/playground.jpg" alt="Track view 17">
-      <figcaption>Hound Playground</figcaption>
-    </figure>    <figure>
-      <img src="assets/images/track/playground2.jpg" alt="Track view 18">
-      <figcaption>Hound Playground</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/track1-backside.jpg" alt="Track view 19">
-      <figcaption>Track Back</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/viewing-gallery.jpg" alt="Track view 20">
-      <figcaption>Viewing Area</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/west-return.jpg" alt="Track view 21">
-      <figcaption>West Return</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/track/north-straight.jpg" alt="Track view 22">
-      <figcaption>North Straight</figcaption>
-    </figure>    <figure>
-      <img src="assets/images/track/west-straight.jpg" alt="Track view 23">
-      <figcaption>West Straight</figcaption>
+  <div class="gallery">
+    <figure *ngFor="let img of galleryImages | slice:0:visibleCount">
+      <img [src]="img.src" [alt]="img.caption" (click)="openLightbox(img)">
+      <figcaption>{{ img.caption }}</figcaption>
     </figure>
   </div>
+
+  <!-- Load More Button -->
+  <div class="gallery-controls" *ngIf="visibleCount < galleryImages.length">
+    <button (click)="loadMore()">Show More</button>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox fade-in" *ngIf="lightboxImage" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="lightbox-arrow left" (click)="prevImage()">&#10094;</button>
+
+      <div class="lightbox-image-container">
+        <img [src]="lightboxImage?.src" [alt]="lightboxImage?.caption">
+        <div class="lightbox-caption">{{ lightboxImage?.caption }}</div>
+      </div>
+
+      <button class="lightbox-arrow right" (click)="nextImage()">&#10095;</button>
+    </div>
+  </div>
+
+
 </section>
