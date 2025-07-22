@@ -1,26 +1,70 @@
-.track-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
+/* Background for the whole section */
+.page-container.track {
+  background: linear-gradient(135deg, #f7f4ef, #e6dfd8); /* soft neutral gradient */
+  padding: 2rem;
+  border-radius: 8px; /* soft edges */
 }
 
+/* Headline color matches track brown */
+.page-container.track h1 {
+  color: #7a4a1c; /* same as the track outline */
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* List styling with spacing */
+.track-description {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 2rem auto;
+  max-width: 800px;
+}
+
+.track-description li {
+  margin-bottom: 1.5rem;
+}
+
+.track-description strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #444; /* subtle contrast */
+}
+
+.track-description p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Main track image */
+.track-overview {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.track-overview img {
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* Optional: Gallery below */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin: 20px 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
 }
-
+.gallery figure {
+  text-align: center;
+}
 .gallery img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;  /* keeps images nicely cropped */
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  border-radius: 6px;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
+/* .page-container.track {
+  background: url('assets/images/bg-pattern.png') repeat;
+  padding: 2rem;
+} */
