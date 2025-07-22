@@ -1,70 +1,49 @@
-.resume-section,
-.certifications-section {
-  margin-top: 32px;
+/* Background like Track page */
+.page-container.friends {
+  background: linear-gradient(135deg, #f7f4ef, #e6dfd8);
+  padding: 2rem;
 }
-.certifications-section a {
-  text-decoration: none;
-  color: #1976d2;
+
+/* Centered headline with track-brown */
+.page-container.friends h1 {
+  color: #7a4a1c;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
-.certifications-section ul {
+
+/* List formatting */
+.friends-description {
   list-style: none;
   padding: 0;
+  margin: 0 auto 2rem auto;
+  max-width: 800px;
 }
-.certifications-section li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
+
+.friends-description li {
+  margin-bottom: 1.5rem;
 }
-.certifications-section li div {
-  line-height: 1.4;
+
+.friends-description strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #444;
 }
-.cert-badge {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+
+.friends-description p {
+  margin: 0.3rem 0 1rem 0;
+  line-height: 1.6;
+}
+
+/* Center the main image with shadow */
+.friends-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.friends-image img {
+  width: 80%;
+  max-width: 700px;
   border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-right: 1rem;
-}
-
-.friends-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.profile-photo {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 50%; /* makes it a circle */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.linkedin-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  background: #0a66c2; /* LinkedIn blue */
-  color: #fff;
-  border-radius: 6px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-
-  .icon-svg {
-    width: 20px;
-    height: 20px;
-  }
-
-  &:hover {
-    background: #004182;
-    transform: translateY(-2px);
-  }
-}
-
-.mat-mdc-outlined-button.mat-primary {
-  border-width: 2px !important;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }

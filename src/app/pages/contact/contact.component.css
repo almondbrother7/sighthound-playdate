@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  background: linear-gradient(135deg, #f7f4ef, #e6dfd8);
 }
 
 .contact-list {
