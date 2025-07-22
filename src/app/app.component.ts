@@ -9,7 +9,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-portfolio';
+  title = 'sighthound-playdate';
   isMobile = false;
 
   constructor(private breakpointObserver: BreakpointObserver) {}

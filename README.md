@@ -8,7 +8,7 @@ This is my **developer portfolio site**, built with **Angular 16** and **Angular
 
 It features:
 - A responsive UI using Angular Material
-- **About**, **Projects**, and **Contact** pages
+- **Home**, **track**, **friends**, and **Contact** pages
 - A **Contact form** protected by:
   - Google reCAPTCHA v3 verification
   - Firebase Cloud Function validation
@@ -21,8 +21,8 @@ It features:
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/almondbrother7/angular-portfolio.git
-cd angular-portfolio
+git clone https://github.com/almondbrother7/sighthound-playdate.git
+cd sighthound-playdate
 npm install
 
 Navigate to http://localhost:4200/.

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/angular-portfolio",
+    "public": "dist/sighthound-playdate",
     "headers": [
       {
         "source": "/index.html",

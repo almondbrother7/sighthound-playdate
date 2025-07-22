@@ -2,18 +2,37 @@
 
 @include mat.core();
 
-$primary-palette: mat.define-palette(mat.$blue-grey-palette, 500);
-$accent-palette: mat.define-palette(mat.$teal-palette, A200, A100, A400);
-$warn-palette: mat.define-palette(mat.$red-palette);
+// ✅ Nature-inspired palette
+$sky-blue-palette: mat.define-palette(mat.$light-blue-palette, 300); // primary = airy sky blue
+$sage-green-palette: mat.define-palette(mat.$green-palette, 200);    // accent = soft sage green
+$clay-warn-palette: mat.define-palette(mat.$deep-orange-palette, 300); // warn = warm clay/orange
 
+// ✅ Define Material theme
 $theme: mat.define-light-theme((
   color: (
-    primary: $primary-palette,
-    accent: $accent-palette,
-    warn: $warn-palette,
+    primary: $sky-blue-palette,
+    accent: $sage-green-palette,
+    warn: $clay-warn-palette,
   ),
   typography: mat.define-typography-config(),
   density: 0,
 ));
 
+// ✅ Apply the theme
 @include mat.all-component-themes($theme);
+
+// ✅ Light sage background for the whole site
+body {
+  background: #f3f7f4; /* very soft sage, easy on the eyes */
+  color: #2d2d2d;      /* slightly darker text for good contrast */
+  font-family: 'Roboto', sans-serif;
+}
+
+// ✅ Optional: elevate card-like sections
+.mat-card,
+section,
+.hero-section {
+  background: #ffffffd9; /* slightly translucent white overlay */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

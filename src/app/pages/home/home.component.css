@@ -1,29 +1,33 @@
 .hero-container {
+  /* Make the banner take more vertical space */
+  height: 70vh; /* increase height */
+  display: flex;
+  align-items: center; /* vertically center the text */
+  justify-content: center;
   text-align: center;
-  padding: 80px 20px;
-  background: linear-gradient(135deg, #37474f, #263238); /* Blue-gray theme */
-  color: white;
+  color: #fff;
+  padding: 0;
+  margin: 0;
+  margin-top: 0 !important;
+
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("/assets/sighthound-banner.jpg") center/cover no-repeat;
+  background-attachment: scroll;
 }
 
+/* The content overlay with transparent dark box */
 .hero-content {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 8px;
   max-width: 800px;
-  margin: 0 auto;
 }
 
-.hero-content h1 {
-  font-size: 2rem;
-  font-weight: 500;
-  margin-bottom: 20px;
-  line-height: 1.4;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 30px;
-}
-
-button[mat-raised-button] {
-  font-size: 1rem;
-  padding: 10px 24px;
+/* Button hover tweak */
+.hero-content button:hover {
+  transform: translateY(-2px);
+  transition: 0.2s ease-in-out;
 }

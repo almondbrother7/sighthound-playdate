@@ -64,7 +64,22 @@
   width: 150px;
   height: 150px;
   padding: 10px;
-  background: #fff; /* clean white box for readability */
+  background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+.contact-image-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.contact-image-container img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+

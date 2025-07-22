@@ -3,8 +3,8 @@
   <!-- Side Drawer for Mobile -->
   <mat-sidenav #drawer mode="over" class="mobile-nav">
     <button mat-button routerLink="/" (click)="drawer.close()">Home</button>
-    <button mat-button routerLink="/about" (click)="drawer.close()">About</button>
-    <button mat-button routerLink="/projects" (click)="drawer.close()">Projects</button>
+    <button mat-button routerLink="/track" (click)="drawer.close()">Track</button>
+    <button mat-button routerLink="/friends" (click)="drawer.close()">Friends</button>
     <button mat-button routerLink="/contact" (click)="drawer.close()">Contact</button>
   </mat-sidenav>
 
@@ -20,14 +20,14 @@
           <mat-icon>menu</mat-icon>
         </button>
         <a routerLink="/" class="site-title">
-          Andrew Carey Portfolio
+          Sitehound Playdate
         </a>
       </ng-container>
 
       <!-- DESKTOP VIEW -->
       <ng-template #desktopNav>
         <a routerLink="/" class="site-title">
-          Andrew Carey Portfolio
+          Sitehound Playdate
         </a>
         <span class="spacer"></span>
         <a mat-button 
@@ -37,14 +37,14 @@
           Home
         </a>
         <a mat-button 
-          routerLink="/about" 
+          routerLink="/friends" 
           routerLinkActive="active-link">
-          About
+          The Pack
         </a>
         <a mat-button 
-          routerLink="/projects" 
+          routerLink="/track" 
           routerLinkActive="active-link">
-          Projects
+          The Track
         </a>
         <a mat-button 
           routerLink="/contact" 
@@ -61,10 +61,7 @@
 
     <footer class="site-footer">
       <p>
-        © 2025 Andrew Carey |
-        <a href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a> |
-        <a href="https://www.linkedin.com/in/andrew-carey7" target="_blank" rel="noopener">LinkedIn</a> |
-        <a href="https://github.com/almondbrother7" target="_blank" rel="noopener">GitHub</a>
+        © 2025 Andrew Carey
       </p>
     </footer>
 

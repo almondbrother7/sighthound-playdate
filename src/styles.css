@@ -28,12 +28,12 @@ a[mat-button] {
   text-decoration: none;
 }
 
-.about-container a {
+.friends-container a {
   color: #1976d2;
   text-decoration: none;
 }
 
-.about-container a:hover {
+.friends-container a:hover {
   text-decoration: underline;
 }
 
@@ -115,6 +115,12 @@ a[mat-button] {
   gap: 8px;
 }
 
+/* Remove any default spacing below the navbar */
+mat-toolbar {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 /* MOBILE breakpoint */
 @media screen and (max-width: 768px) {
   body {
@@ -148,14 +154,14 @@ a[mat-button] {
 }
 
 @media screen and (max-width: 768px) {
-  /* ABOUT SECTION: stack vertically */
-  .about-header {
+  /* FRIENDS SECTION: stack vertically */
+  .friends-header {
     display: flex;
     flex-direction: column !important;
     align-items: center;
     text-align: center;
   }
-  .about-header img.profile-photo {
+  .friends-header img.profile-photo {
     max-width: 150px;
     margin-bottom: 1rem;
   }
@@ -166,7 +172,7 @@ a[mat-button] {
     gap: 1rem;
   }
   /* PROJECT CARDS: 1 column on mobile */
-  .projects-grid {
+  .track-grid {
     grid-template-columns: 1fr !important;
   }
   /* Resume download button full width */
@@ -197,7 +203,7 @@ a.mat-mdc-button {
 }
 
 .project-card a,
-.about-container a:not(.linkedin-button) {
+.ç-container a:not(.linkedin-button) {
   color: #1976d2;
   text-decoration: none;
   font-size: 1.05rem;
@@ -205,8 +211,7 @@ a.mat-mdc-button {
 }
 
 .project-card a:hover,
-.about-container a:not(.linkedin-button):hover {
+.friends-container a:not(.linkedin-button):hover {
   text-decoration: underline;
   color: #125a9c;
 }
-
