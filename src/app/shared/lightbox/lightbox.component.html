@@ -1,0 +1,12 @@
+<div class="lightbox fade-in" (click)="close()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="lightbox-arrow left" (click)="prev()">&#10094;</button>
+
+    <div class="lightbox-image-container">
+      <img [src]="currentImage.src" [alt]="currentImage.caption || ''">
+      <div class="lightbox-caption">{{ currentImage.caption }}</div>
+    </div>
+
+    <button class="lightbox-arrow right" (click)="next()">&#10095;</button>
+  </div>
+</div>

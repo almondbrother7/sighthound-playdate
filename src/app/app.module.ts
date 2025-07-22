@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './shared/material.module';
+import { LightboxComponent } from './shared/lightbox/lightbox.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     HomeComponent,
     FriendsComponent,
     TrackComponent,
-    ContactComponent
+    ContactComponent,
+    LightboxComponent,
   ],
   imports: [
     BrowserModule,

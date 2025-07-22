@@ -27,8 +27,8 @@
   </div>
 
   <div class="gallery">
-    <figure *ngFor="let img of galleryImages | slice:0:visibleCount">
-      <img [src]="img.src" [alt]="img.caption" (click)="openLightbox(img)">
+    <figure *ngFor="let img of galleryImages | slice:0:visibleCount; let i = index">
+      <img [src]="img.src" [alt]="img.caption" (click)="openLightbox(i)">
       <figcaption>{{ img.caption }}</figcaption>
     </figure>
   </div>
@@ -38,19 +38,14 @@
     <button (click)="loadMore()">Show More</button>
   </div>
 
-  <!-- Lightbox Overlay -->
-  <div class="lightbox fade-in" *ngIf="lightboxImage" (click)="closeLightbox()">
-    <div class="lightbox-content" (click)="$event.stopPropagation()">
-      <button class="lightbox-arrow left" (click)="prevImage()">&#10094;</button>
+  <!-- Reusable Lightbox -->
+  <app-lightbox
+    *ngIf="visibleLightbox"
+    [images]="galleryImages"
+    [startIndex]="clickedIndex"
+    (closed)="visibleLightbox = false">
+  </app-lightbox>
 
-      <div class="lightbox-image-container">
-        <img [src]="lightboxImage?.src" [alt]="lightboxImage?.caption">
-        <div class="lightbox-caption">{{ lightboxImage?.caption }}</div>
-      </div>
-
-      <button class="lightbox-arrow right" (click)="nextImage()">&#10095;</button>
-    </div>
-  </div>
 
 
 </section>

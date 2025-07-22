@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-track',
@@ -6,9 +6,6 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./track.component.css']
 })
 export class TrackComponent {
-  visibleCount = 6;
-  readonly increment = 6;
-
   galleryImages = [
       { src: 'assets/images/track/turn1.jpg', caption: 'Track view 1 '},
       { src: 'assets/images/track/turn2.jpg', caption: 'Track view 2 '},
@@ -59,55 +56,20 @@ export class TrackComponent {
 
     ];
 
-    // Lightbox state
-  lightboxImageIndex: number | null = null;
-  get lightboxImage() {
-    return this.lightboxImageIndex !== null ? this.galleryImages[this.lightboxImageIndex] : null;
-  }
+  visibleLightbox = false;
+  clickedIndex = 0;
+  visibleCount = 6;
+  increment = 6;
 
   loadMore() {
     this.visibleCount += this.increment;
     setTimeout(() => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }, 50);
   }
 
-  openLightbox(img: { src: string; caption: string }) {
-    this.lightboxImageIndex = this.galleryImages.indexOf(img);
+  openLightbox(index: number) {
+    this.clickedIndex = index;
+    this.visibleLightbox = true;
   }
-
-  closeLightbox() {
-    this.lightboxImageIndex = null;
-  }
-
-  nextImage() {
-    if (this.lightboxImageIndex !== null) {
-      this.lightboxImageIndex = (this.lightboxImageIndex + 1) % this.galleryImages.length;
-    }
-  }
-
-  prevImage() {
-    if (this.lightboxImageIndex !== null) {
-      this.lightboxImageIndex =
-        (this.lightboxImageIndex - 1 + this.galleryImages.length) % this.galleryImages.length;
-    }
-  }
-
-  // Listen for ESC and arrow keys
-  @HostListener('document:keydown', ['$event'])
-  handleKeydown(event: KeyboardEvent) {
-    if (this.lightboxImageIndex !== null) {
-      if (event.key === 'Escape') {
-        this.closeLightbox();
-      } else if (event.key === 'ArrowRight') {
-        this.nextImage();
-      } else if (event.key === 'ArrowLeft') {
-        this.prevImage();
-      }
-    }
-  }
-
 }
