@@ -1,7 +1,9 @@
 /* Track Section Container */
 .page-container.track {
-  background: linear-gradient(135deg, #f7f4ef, #e6dfd8); /* soft neutral gradient */
+  background: linear-gradient(135deg, #f7f4ef, #e6dfd8);
   padding: 2rem;
+  height: auto;
+  overflow: visible;
 }
 
 /* Headline in track-brown */
@@ -50,6 +52,7 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 1rem;
   margin-top: 2rem;
+  height: auto;
 }
 .gallery figure {
   text-align: center;

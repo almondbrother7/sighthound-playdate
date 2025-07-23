@@ -1,24 +1,29 @@
 html, body {
+  /* ✅ Allow page to grow naturally */
   height: auto;
   min-height: 100%;
   overflow-y: auto;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+/* ✅ Keep your background gradient but don’t lock height */
 body {
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   background-attachment: fixed;
-  color: #222; 
+  color: #222;
 }
 
+/* ✅ Make Angular root + containers expand with content instead of capping at 100vh */
 app-root,
 .mat-sidenav-container,
 .main-content {
-  background: transparent !important;
-  min-height: 100vh;
-  height: auto;
-  overflow-y: auto;
+  display: block;          /* remove any flex constraint */
+  min-height: auto;        /* allow growth beyond viewport */
+  height: auto !important; /* override any 100vh limitation */
+  overflow-y: visible;     /* let content push page height */
 }
+
 
 .spacer {
   flex: 1 1 auto;
