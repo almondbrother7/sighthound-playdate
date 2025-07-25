@@ -73,7 +73,6 @@ export class TrackComponent {
       { src: 'assets/images/grounds/paper-lily.jpg', caption: 'Paper Lily'},
       { src: 'assets/images/grounds/pineapples.jpg', caption: 'Pineapples'},
       { src: 'assets/images/grounds/porter-weed.jpg', caption: 'Porterweed'},
-      { src: 'assets/images/grounds/shade-structure.jpg', caption: 'Shade Structure'},
       { src: 'assets/images/grounds/sidewalk-cut-through.jpg', caption: 'Sidewalk Cut Through'},
       { src: 'assets/images/grounds/song-of-india.jpg', caption: 'Song Of India'},
       { src: 'assets/images/grounds/spider-lily.jpg', caption: 'Spider Lily'},
