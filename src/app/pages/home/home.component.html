@@ -7,3 +7,26 @@
   </div>
 </div>
 
+<section class="mini-gallery">
+  <h2>Julio, Forever in Motion</h2>
+  <div class="gallery-row">
+    <div 
+      *ngFor="let img of julioGallery; let i = index" 
+      class="gallery-item"
+      (click)="openLightbox(i)"
+    >
+      <img [src]="img.src" [alt]="img.caption">
+    </div>
+  </div>
+  <p class="gallery-caption">
+    Our beloved whippet, Julio - this was <i>one</i> stride!
+  </p>
+</section>
+
+<!-- Lightbox -->
+<app-lightbox 
+  *ngIf="visibleLightbox"
+  [images]="julioGallery"
+  [startIndex]="clickedIndex"
+  (closed)="visibleLightbox = false"
+></app-lightbox>
