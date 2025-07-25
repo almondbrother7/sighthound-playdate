@@ -5,6 +5,30 @@
   background: linear-gradient(135deg, #f7f4ef, #e6dfd8);
 }
 
+.contact-image-container {
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.contact-image-container img {
+  display: block;
+  max-width: 50%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.photo-caption {
+  display: block;
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
 .contact-list {
   list-style: none;
   padding: 0;
@@ -72,17 +96,66 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.contact-image-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px auto;
-}
-
-.contact-image-container img {
-  max-width: 50%;
-  height: auto;
+.waiver-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f8f8;
   border-radius: 8px;
-  object-fit: cover;
+  text-align: center;
 }
 
+.download-waiver-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
 
+.download-waiver-button:hover {
+  background: #43a047;
+}
+
+.small-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 8px;
+}
+
+.donate-section {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f7f4ef;
+  border-radius: 8px;
+}
+
+.donate-section h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.donate-section p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+.donate-button {
+  display: inline-block;
+  background: #00adef;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.donate-button:hover {
+  background: #0095cf;
+}
