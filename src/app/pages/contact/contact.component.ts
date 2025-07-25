@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EnvironmentService } from '../../services/environment.service';
+import { environment } from '../../../environments/environment';
 
-declare const grecaptcha: any;
 
 @Component({
   selector: 'app-contact',
@@ -14,7 +13,9 @@ export class ContactComponent {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private env: EnvironmentService, private http: HttpClient) {}
+  private readonly formspreeEndpoint = environment.formspreeEndpoint;
+
+  constructor(private http: HttpClient) {}
 
   onSubmit(event: Event) {
     event.preventDefault();
@@ -22,9 +23,10 @@ export class ContactComponent {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
 
+    // ✅ Honeypot anti-bot field
     const honeypot = (form.querySelector('input[name="website"]') as HTMLInputElement)?.value;
     if (honeypot) {
-      console.warn('Honeypot field filled - likely a bot.');
+      console.warn('[Playdate] Honeypot triggered - likely a bot.');
       return;
     }
 
@@ -32,35 +34,8 @@ export class ContactComponent {
     this.successMessage = '';
     this.errorMessage = '';
 
-    grecaptcha.ready(() => {
-      grecaptcha.execute(this.env.recaptchaSiteKey, { action: 'submit' }).then((token: string) => {
-        fetch("/api/verifyRecaptcha", {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ recaptchaToken: token })
-        })
-        .then(res => res.json())
-        .then(result => {
-          console.log('reCAPTCHA verification result:', result);
-          if (result.success) {
-            this.sendToFormspree(formData);
-          } else {
-            this.isSubmitting = false;
-            console.warn('reCAPTCHA verification failed:', result.reason);
-            this.errorMessage = 'Verification failed. Please try again or contact me directly.';
-          }
-        })
-        .catch(() => {
-          this.isSubmitting = false;
-          this.errorMessage = 'Error verifying reCAPTCHA.';
-        });
-      });
-    });
-
-  }
-
-  private sendToFormspree(formData: FormData) {
-    this.http.post('https://formspree.io/f/movwrved', formData).subscribe({
+    // ✅ Send directly to Formspree
+    this.http.post(this.formspreeEndpoint, formData).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.successMessage = '✅ Your message has been sent successfully!';

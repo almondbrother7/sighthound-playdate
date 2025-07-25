@@ -50,6 +50,10 @@
     <div class="feedback success" *ngIf="successMessage">{{ successMessage }}</div>
     <div class="feedback error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
+    <!-- Hidden field to tag the site -->
+    <input type="hidden" name="site" value="Sighthound Playdate" />
+
+    <!-- Honeypot -->
     <div style="display: none;">
       <label>Leave this field empty</label>
       <input type="text" name="website" tabindex="-1" autocomplete="off" />

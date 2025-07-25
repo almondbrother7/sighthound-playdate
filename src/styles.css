@@ -1,29 +1,29 @@
 html, body {
-  /* ✅ Allow page to grow naturally */
-  height: auto;
   min-height: 100%;
-  overflow-y: auto;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-}
 
-/* ✅ Keep your background gradient but don’t lock height */
-body {
   background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
   background-attachment: fixed;
   color: #222;
+
+  display: flex;
+  flex-direction: column;
 }
 
-/* ✅ Make Angular root + containers expand with content instead of capping at 100vh */
-app-root,
-.mat-sidenav-container,
-.main-content {
-  display: block;          /* remove any flex constraint */
-  min-height: auto;        /* allow growth beyond viewport */
-  height: auto !important; /* override any 100vh limitation */
-  overflow-y: visible;     /* let content push page height */
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
+.main-content,
+mat-sidenav-container,
+mat-sidenav-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .spacer {
   flex: 1 1 auto;
@@ -219,4 +219,39 @@ a.mat-mdc-button {
 .friends-container a:not(.linkedin-button):hover {
   text-decoration: underline;
   color: #125a9c;
+}
+
+
+.site-footer {
+  background: #f5f5f5; /* keep the grey background */
+  border-top: 1px solid #ddd;
+  padding: 12px 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.footer-content span {
+  margin: 4px 0;
+}
+
+.footer-link a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.footer-link a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+  }
 }
