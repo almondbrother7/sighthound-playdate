@@ -57,9 +57,7 @@ Formspree spam filtering
 🌐 Deployment
 Deployed to Firebase Hosting using GitHub Actions.
 
-Live site: https://sighthound-playdate.web.app
-
-Future custom domain: sighthound-playdate.andrewcarey.dev
+Live site: https://sighthound-playdate.andrewcarey.dev
 
 🔗 More from Andrew Carey
 Developer Portfolio: https://andrewcarey.dev
