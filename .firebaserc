@@ -1,6 +1,7 @@
 {
   "projects": {
-    "default": "sighthound-playdate"
+    "default": "sighthound-playdate",
+    "sighthound-playdate": "sighthound-playdate"
   },
   "targets": {},
   "etags": {}
